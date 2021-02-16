@@ -52,7 +52,7 @@ def lambda_handler(event, context):
                    region_name=REGION)
 
     response = sqs.receive_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/110110023967/Q1",
+        QueueUrl="https://sqs.us-east-1.amazonaws.com/11010023967/Q1",
         AttributeNames=[
             'SentTimestamp'
         ],
@@ -71,7 +71,7 @@ def lambda_handler(event, context):
     if "Messages" in response.keys():
         handler = response['Messages'][0]["ReceiptHandle"]
         sqs.delete_message(
-            QueueUrl="https://sqs.us-east-1.amazonaws.com/110110023967/Q1",
+            QueueUrl="https://sqs.us-east-1.amazonaws.com/11011003967/Q1",
             ReceiptHandle=handler
         )
 
@@ -97,7 +97,7 @@ def lambda_handler(event, context):
                            REGION,
                            "es"
                         )
-        eshost = "search-restaurants-ptymm4piztavgvv5khrjcp3g3y.us-east-1.es.amazonaws.com"  #
+        eshost = "search-restaurants-ptymm4pztavgvv5khrjcp3gy.us-east-1.es.amazonaws.com"  #
         es = Elasticsearch(
                 hosts=[{'host': eshost, 'port': 443}],
                 http_auth=awsauth,
